@@ -1,3 +1,10 @@
+import java.util.Scanner;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.FileNotFoundException;
+
+
 public class Tickets{
 
     public static void main(String[] args){
@@ -29,14 +36,50 @@ public class Tickets{
 
         */
 
-        String  ticket  = "123454";                            
-        String  last = ticket.substring(ticket.length() - 1);                                                   
-        int     last_digit = Integer.valueOf(last);
-        String  reduced_ticket = ticket.substring(0, ticket.length() - 1);
-        int     ticket_number = Integer.valueOf(reduced_ticket);
-        int     remainder = ticket_number % 7; 
-        boolean validity = remainder == last_digit; 
-        String  format = "Original Ticket #: %s\nLast Digit: %d\nReduced Ticket #: %d\nRemainder: %d\nValidity: %b\n";
-        System.out.printf(format, ticket, last_digit, ticket_number, remainder, validity);  
+        try{
+            File inputFile = new File("tickets.txt"); // adds a new file object associated with "tickets.txt"
+            java.util.Scanner fileScanner = new Scanner(inputFile); // adds a new scanner, pointing at inputFile as input source
+            FileWriter outputFile = new FileWriter("valid_tix.txt"); // instantiate a new FileWriter, pointing ata new txt file as output.
+            // we will be conditionally adding to a buffer for writing. 
+
+            while(fileScanner.hasNext()){
+                String  ticket  = fileScanner.nextLine(); // initializes a new ticket
+
+                String  last = ticket.substring(ticket.length() - 1); 
+                // creates a new string equal to the last character in the ticket string. 
+                // subString() actually runs from the provided index until the end of the string, but it doesn't make a difference in this case. 
+
+                int     last_digit = Integer.valueOf(last); 
+                // gets the integer value of the last character in ticket. valueOf returns the integer value of the binary of the character.
+
+                String  reduced_ticket = ticket.substring(0, ticket.length() - 1);
+                // creates a new string from the first character to the last (exclusive) of ticket.
+
+                int     ticket_number = Integer.valueOf(reduced_ticket);
+                // creates a new int out of the value of reduced_ticket
+
+                int     remainder = ticket_number % 7; 
+                // creates a new int variable of the remainder of ticket_number modulus divison of 7
+
+                boolean validity = remainder == last_digit; 
+                // checks to see if the remaiander and last digit are equal to each other. 
+                // it stores the result of this boolean operation in the validity variable
+
+                if(validity){
+                    outputFile.write(ticket+"\n"); // adds the ticket plus a newline character to a buffer
+                }
+            }
+            outputFile.close(); // closes the output and writes the uffer to the file
+            fileScanner.close(); // closes the file scanner
+        }
+        catch(IOException e){
+            System.out.println("IO EXCEPTION");
+        }
+
+        //String  format = "Original Ticket #: %s\nLast Digit: %d\nReduced Ticket #: %d\nRemainder: %d\nValidity: %b\n";
+        // creates a new string, format, with formattable and newline characters in it. cool, didn't know you could do this.
+
+        //System.out.printf(format, ticket, last_digit, ticket_number, remainder, validity);
+        // prints the format string, and supplies arguments that are formatted into the string.   
     }
 }
