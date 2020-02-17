@@ -57,14 +57,15 @@ class Surface extends JPanel {
             y += 15;
         }
 
-        int width = getWidth();
-        int height = getHeight();
-        g2d.setColor(Color.GREEN);
+        int width = getWidth();		// get width of the window
+        int height = getHeight();	// get height of the window
+        g2d.setColor(Color.GREEN);	// use a constant to change the color
         String s = "I'm a graphics programmer now!!";
+	// roughly calculate the middle of the window
         g2d.drawString(s, (width / 2) - s.length() * 3 , height / 2);
 
 
-        g2d.setColor(Color.RED);
+        g2d.setColor(Color.GREEN);
         Random random = new Random();
         for(int i = 0; i < 2000; i++){
             x = Math.abs(random.nextInt()) % width;
