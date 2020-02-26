@@ -17,9 +17,9 @@ class OverloadingIssues{
     }
 
     public static void main(String args[]){
-	    OverloadingIssues obj = new OverloadingIssues();
+	OverloadingIssues obj = new OverloadingIssues();
 
-	    obj.display(100, 20.67f);   // calls method C
+	obj.display(100, 20.67f);   // calls method C
         obj.display(100, 20.67);    // calls method A
         obj.display(1, 1);          // calls method C
     }
