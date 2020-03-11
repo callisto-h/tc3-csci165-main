@@ -1,5 +1,4 @@
 public class StringEquality{
-
     public static void main(String[] args){
 
         // create two identical String objects using "new"
@@ -17,5 +16,10 @@ public class StringEquality{
         // test String equality using ==
         System.out.print(string3 + " equals " + string4 + ": ");
         System.out.println(string3 == string4);
+
+        System.out.println("string1 hash code: " + string1.hashCode());
+        System.out.println("string2 hash code: " + string2.hashCode());
+        System.out.println("string3 hash code: " + string3.hashCode());
+        System.out.println("string4 hash code: " + string4.hashCode());
     }
 }

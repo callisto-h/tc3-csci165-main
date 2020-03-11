@@ -6,12 +6,12 @@ public class Driver {
 		// these overloaded constructors have dependencies
 		Date hired = new Date(1, 4, 2020);
 		Employee emp1 = new Employee("Frank", "Stein", hired);
+
+		hired.setYear(1500);
 		
 		Employee emp2 = new Employee("Mary", "Shelly", new Date(1, 4, 2020));
 		
 		System.out.println(emp1);
 		System.out.println(emp2);
-
 	}
-
 }

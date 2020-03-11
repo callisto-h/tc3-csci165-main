@@ -29,6 +29,16 @@ public class Employee{
 		this.lastName 	= lastName;
 		this.setHireDate(hireDate);
 	}
+
+	public Employee(Employee toClone){
+		this.firstName	= toClone.firstName;
+		this.lastName 	= toClone.lastName;
+		this.salary		= toClone.salary;
+		this.ssn		= toClone.ssn;
+		this.title		= toClone.title;
+		this.hireDate	= new Date(toClone.hireDate);
+
+	}
 	
 	public String getFirstName() {
 		return firstName;
@@ -72,12 +82,12 @@ public class Employee{
 	
 	public Date getHireDate() {
 		// return a clone of the private data
-		return new Date(hireDate);
+		return hireDate;
+		//return new Date(hireDate);
 	}
 	public void setHireDate(Date hireDate) {
 		// create a local cloned instance to set
-		this.hireDate = new Date(hireDate);
-		
+		this.hireDate = new Date(hireDate);	
 	}
 	
 	public Date getDateTerminated() {
