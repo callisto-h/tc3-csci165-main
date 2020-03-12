@@ -11,16 +11,20 @@ class CustomerTest {
 
 	@Test
 	void testCustomerCustomer() {
+		
 		Address address = new Address();
+		
 		Customer customer1 = new Customer("Callisto", "Hess", "hesscallisto@gmail.com", address);
 		Customer customer2 = new Customer(customer1);
 		
+		// different references, still equal objects
 		assertTrue(customer1 != customer2);
 		assertTrue(customer1.equals(customer2));
 		
 		Customer customer3 = new Customer();
 		Customer customer4 = new Customer(customer3);
 		
+		// different references, still equal objects
 		assertTrue(customer3 != customer4);
 		assertTrue(customer3.equals(customer4));
 	}
@@ -31,6 +35,7 @@ class CustomerTest {
 		Customer customer1 = new Customer("Callisto", "Hess", "hesscallisto@gmail.com", address);
 		Customer customer2 = new Customer("Jon", "Man", "jonman@mail.co", address);
 		
+		// getName returns first + last
 		assertTrue(customer1.getName().equals("Callisto Hess"));
 		assertTrue(customer2.getName().equals("Jon Man"));
 	}
@@ -38,6 +43,8 @@ class CustomerTest {
 	@Test
 	void testSetEmail() {
 		Address address = new Address();
+		
+		// won't work
 		Customer customer1 = new Customer("Callisto", "Hess", "brokenemail", address);
 		assertTrue(customer1.getEmail().equals("no email on file"));
 		

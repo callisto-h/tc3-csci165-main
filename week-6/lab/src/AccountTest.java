@@ -5,19 +5,24 @@ class AccountTest {
 
 	@Test
 	void testAccountAccount() {
+		// new null field accounts
 		Account account1 = new Account();
-		Account account2 = new Account(account1);
+		Account account2 = new Account(account1); // clone
+		// equal but different references
 		assertTrue(account1 != account2);
 		assertTrue(account1.equals(account2));
 		
+		// new partially null field accounts
 		Account account3 = new Account("ID", new Customer(), 145.50, 200.0, new Date());
-		Account account4 = new Account(account3);
+		Account account4 = new Account(account3); // clone
+		// equal but different references
 		assertTrue(account3 != account4);
 		assertTrue(account3.equals(account4));
 	}
 
 	@Test
 	void testSetBalance() {
+		// new null field account
 		Account account1 = new Account();
 		account1.setBalance(100.0);
 		assertEquals(account1.getBalance(), 100.0);
@@ -31,16 +36,16 @@ class AccountTest {
 	void testSetCreditLimit() {
 		Account account1 = new Account();
 		account1.setBalance(100.0);
-		account1.setCreditLimit(100.0);
+		account1.setCreditLimit(100.0); // credit limit = balance
 		assertEquals(account1.getCreditLimit(), 100.0);
 		
 		// cannot have credit be more than 2x balance
-		account1.setBalance(0);
-		account1.setCreditLimit(100.0);
+		account1.setBalance(0); // enforces credit limit becoming 0
+		account1.setCreditLimit(100.0); // doesn't work
 		assertEquals(account1.getCreditLimit(), 0.0);
 		
 		// sets credit to 2x balance
-		account1.setBalance(100.0);
+		account1.setBalance(100.0); // enforces credit limit maxing at 200
 		account1.setCreditLimit(500.0);
 		assertEquals(account1.getCreditLimit(), 200.0);
 	}
@@ -48,17 +53,17 @@ class AccountTest {
 	@Test
 	void testCalculateDiscountLevel() {
 		// .02 increase per year
-		Date date1 = new Date(1, 1, 2018);
+		Date date1 = new Date(1, 1, 2018); // 2 years = .04
 		Account account1 = new Account("ID", new Customer(), 0.0, 0.0, date1);
 		assertEquals(account1.calculateDiscountLevel(), 0.04);
 		
 		// has not been a year
-		Date date2 = new Date(1, 1, 2020);
+		Date date2 = new Date(1, 1, 2020); // 0 years = .00
 		Account account2 = new Account("ID", new Customer(), 0.0, 0.0, date2);
 		assertEquals(account2.calculateDiscountLevel(), 0.0);
 		
 		// maxxes out at 100%
-		Date date3 = new Date();
+		Date date3 = new Date(); // over 1k years = 1.0
 		Account account3 = new Account("ID", new Customer(), 0.0, 0.0, date3);
 		assertEquals(account3.calculateDiscountLevel(), 1.0);
 		
@@ -66,10 +71,12 @@ class AccountTest {
 
 	@Test
 	void testEqualsObject() {
+		// null fields maintain equality
 		Account account1 = new Account();
 		Account account2 = new Account();
 		assertTrue(account1.equals(account2));
 		
+		// some null fields and others filled maintain equality
 		account1.setBalance(100.0);
 		account2.setBalance(100.0);
 		assertTrue(account1.equals(account2));
@@ -83,6 +90,7 @@ class AccountTest {
 		Account account4 = new Account("ID", customer, 155.0, 500.0, date);
 		assertTrue(account3.equals(account4));
 		
+		// change one slightly
 		account3.getCustomer().setEmail("broken");
 		assertFalse(account3.equals(account4));
 		
@@ -113,6 +121,8 @@ class AccountTest {
 	void testCompareTo() {
 		Customer customer = new Customer();
 		Date date = new Date();
+		
+		
 		Account account1 = new Account("A1", customer, 0.0, 0.0, date);
 		Account account2 = new Account("A1A", customer, 0.0, 0.0, date);
 		assertEquals(account1.compareTo(account2), -1);

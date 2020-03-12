@@ -20,7 +20,7 @@ public class Invoice {
 
 	// gets order date of invoice
 	public Date getOrderDate() {
-		return orderDate;
+		return new Date(orderDate); // privacy
 	}
 
 	// sets order date of invoice
@@ -30,7 +30,7 @@ public class Invoice {
 
 	// gets account of invoice
 	public Account getAccount() {
-		return account;
+		return new Account(account);
 	}
 
 	/*

@@ -155,25 +155,27 @@ class InvoiceTest {
 	@Test
 	void testCompareTo() {
 		Date noDiscount = new Date(1, 1, 2020);
+		
+		// equal amounts due
 		Account account = new Account(null, null, 0.0, 0.0, noDiscount);
 		Invoice invoice = new Invoice(null, account, null);
 		Invoice invoice2 = new Invoice(null, account, null);
 		
 		assertEquals(invoice.compareTo(invoice2), 0);
 		
+		// still equal amounts due
 		invoice.addProduct(new Product(null, null, 10.0, null));
 		invoice2.addProduct(new Product(null, null, 10.0, null));
 		
 		assertEquals(invoice.compareTo(invoice2), 0);
 		
+		// now invoice has a higher total. this > that = 1
 		invoice.addProduct(new Product(null, null, 20.0, null));
 		invoice2.addProduct(new Product(null, null, 10.0, null));
 		
-		System.out.println(invoice);
-		System.out.println(invoice2);
-		
 		assertEquals(invoice.compareTo(invoice2), 1);
 		
+		// now invoice2 has a higher total. this < that = -1
 		invoice.addProduct(new Product(null, null, 10.0, null));
 		invoice2.addProduct(new Product(null, null, 1000.0, null));
 		

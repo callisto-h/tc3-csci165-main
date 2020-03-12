@@ -130,7 +130,7 @@ public class Account {
 
 	// gets the customer
 	public Customer getCustomer() {
-		return customer;
+		return new Customer(customer); // privacy
 	}
 
 	
