@@ -1,0 +1,26 @@
+Quarantined Quorum
+
+Lesson Plan for Monday March 30 2020
+
+    Greetings and salutations . . . mic check (make sure boomer can share screen)
+    Review zyBook and assignments
+    Review new grading policy
+    Inheritance and Composition ("is a" vs "has a")
+    Understand that subclasses have multiple types
+    Understand the subtle differences between instanceof and getClass
+    Properly define an equals method
+    Observe polymorphic behavior
+
+Files:
+
+instanceof directory: This directory contains an inheritance hierarchy with overridden equals methods defined using the instanceof operator to check lineage. Run the Driver and examine the output to see strange equls method behavior
+
+e1.equals(e2) -> true
+e2.equals(e1) -> false
+
+Should the equals method behave in this way?
+
+getClass directory: This directory contains an inheritance hierarchy with overridden equals methods defined using a call to the inherited getClass() method to check lineage. Run the Driver and examine the output to see more reliable equls method behavior
+
+e1.equals(e2) -> false
+e2.equals(e1) -> false
