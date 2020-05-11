@@ -1,4 +1,4 @@
-# ARDA 2020
+# ARDA (Autonomous Rabbits Dream of Arda)
 
 A Middle-earth-simulating cellular automaton.
 
@@ -48,7 +48,9 @@ An **Entity** might be a **Hobbit**. A **Hobbit**, through **Entity**, has an **
 
 **Rabbits** move randomly and reproduce. Inside **Rabbit**’s **Inventory** might be some **Meat**. When the **Rabbit** is slain by a **Hobbit**, the **Meat** passes from the **Rabbit**’s **Inventory** to the **Hobbit**’s. **Rabbits** are not attacked by any other **Creature**.
 
-Finally, **Shrubbery Entities** like **Bush** or **Stone** do not move, but still have **Inventories**. Inside the **Inventory** of a **Bush** might be an **Apple**. Inside the **Inventory** of a **Stone** might be a random powerful **Item**, such as the aforementioned **Mithril** armor. By interacting with these objects, **Creatures** can obtain loot to aid them in their quests.
+**Ents** move randomly and at random intervals. They are able to move multiple spaces at a time due to their significant height. Occasionally, each **Ent** will spawn a **Bush** near its position, repopulating the **World** with **Shrubbery**.
+
+Finally, **Shrubbery Entities** like **Bush** or **Stone** do not move, but still have **Inventories**. Inside the **Inventory** of a **Bush** might be an **Apple**. Inside the **Inventory** of a **Stone** might be a random powerful **Item**, such as the aforementioned **Mithril** armor. By interacting with these objects, **Creatures** can obtain loot to aid them in their quests. **Bushes**, particularly, decay over time and eventually die out. This, in combination with **Ent**-based **Bush** spawning, keeps the **World** comfortably vegetated.
 
 ### App
 
